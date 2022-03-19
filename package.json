@@ -1,16 +1,11 @@
 {
   "private": true,
-  "workspaces": [
-    "packages/*",
-    "apps/*"
-  ],
   "scripts": {},
   "devDependencies": {
-    "turbo": "1.1.3"
+    "turbo": "1.1.6"
   },
-  "packageManager": "yarn@1.22.17",
+  "packageManager": "pnpm@6.32.3",
   "volta": {
-    "node": "16.14.0",
-    "yarn": "1.22.17"
+    "node": "16.14.0"
   }
 }
