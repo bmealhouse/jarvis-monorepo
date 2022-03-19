@@ -1,0 +1,26 @@
+{
+  "name": "verizon-split-bill",
+  "private": true,
+  "scripts": {
+    "build": "cdk synth",
+    "deploy": "cdk deploy",
+    "invoke": "ts-node invoke.ts"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "3.54.1",
+    "aws-cdk-lib": "2.17.0",
+    "chrome-aws-lambda": "10.1.0",
+    "constructs": "10.0.91",
+    "puppeteer": "10.1.0",
+    "puppeteer-core": "10.1.0"
+  },
+  "devDependencies": {
+    "@types/aws-lambda": "8.10.93",
+    "@types/node": "16.x",
+    "aws-cdk": "2.17.0",
+    "dotenv": "16.0.0",
+    "esbuild": "0.14.27",
+    "ts-node": "10.7.0",
+    "typescript": "4.6.2"
+  }
+}

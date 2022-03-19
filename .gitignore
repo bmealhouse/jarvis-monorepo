@@ -1,3 +1,5 @@
+.env
 .pnpm-debug.log
 .turbo
+cdk.out
 node_modules
