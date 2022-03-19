@@ -1,0 +1,59 @@
+---
+- name: check if node is installed
+  command: volta which node
+  register: which_node
+  changed_when: false
+  ignore_errors: true
+
+- name: install node
+  command: volta install node
+  when: which_node.rc == 1
+
+- name: install yarn
+  command: volta install yarn
+  when: which_node.rc == 1
+
+- name: check if pnpm is installed
+  command: volta which pnpm
+  register: which_pnpm
+  changed_when: false
+  ignore_errors: true
+
+- name: install pnpm
+  command: volta install pnpm
+  when: which_pnpm.rc == 1
+
+- name: check if spot is installed
+  command: volta which spot
+  register: which_spot
+  changed_when: false
+  ignore_errors: true
+
+- name: install spot
+  command: volta install spot
+  when: which_spot.rc == 1
+
+- name: list npm config
+  command: npm config list
+  register: npm_config
+  changed_when: false
+
+- name: set npm default author name
+  command: npm set init-author-name 'Brent Mealhouse'
+  when: "'init-author-name' not in npm_config.stdout"
+
+- name: set npm default author email
+  command: npm set init-author-email 'bmealhouse@gmail.com'
+  when: "'init-author-email' not in npm_config.stdout"
+
+- name: set npm default author url
+  command: npm set init-author-url 'https://bmealhouse.dev/'
+  when: "'init-author-url' not in npm_config.stdout"
+
+- name: set npm default license
+  command: npm set init-license 'MIT'
+  when: "'init-license' not in npm_config.stdout"
+
+- name: set npm package installation strategy
+  command: npm set save-exact true
+  when: "'save-exact' not in npm_config.stdout"

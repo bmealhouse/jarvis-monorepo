@@ -1,0 +1,18 @@
+---
+- name: configure git user name
+  git_config:
+    name: user.name
+    scope: global
+    value: "Brent Mealhouse"
+
+- name: configure git user email
+  git_config:
+    name: user.email
+    scope: global
+    value: "bmealhouse@gmail.com"
+
+- name: configure git init default branch
+  git_config:
+    name: init.defaultBranch
+    scope: global
+    value: "main"

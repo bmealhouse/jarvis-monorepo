@@ -1,0 +1,20 @@
+---
+- name: ensure the ~/.ssh directory exists
+  file:
+    path: ~/.ssh
+    state: directory
+
+- name: generate an OpenSSH keypair for GitHub access
+  register: ssh_key
+  community.crypto.openssh_keypair:
+    path: ~/.ssh/id_rsa
+    type: rsa
+    size: 4096
+    comment: bmealhouse@gmail.com
+
+- name: authorize SSH key with GitHub
+  community.general.github_key:
+    name: Brent's MacBook Pro (Ansible)
+    token: "{{ github_access_token }}"
+    pubkey: "{{ ssh_key.public_key }} {{ ssh_key.comment }}"
+    state: present

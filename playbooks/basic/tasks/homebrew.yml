@@ -1,0 +1,26 @@
+---
+- name: check if homebrew is installed
+  register: homebrew_path
+  stat:
+    path: /opt/homebrew
+
+- name: install homebrew
+  script: ../install-homebrew.sh
+  when: not homebrew_path.stat.exists
+
+- name: add homebrew to PATH
+  shell: |
+    echo 'eval "$(/opt/homebrew/bin/brew shellenv)"' >> ~/.zprofile
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  when: not homebrew_path.stat.exists
+
+- name: install homebrew casks
+  community.general.homebrew_cask:
+    name:
+      - appcleaner
+      - figma
+      - google-chrome
+      - raycast
+      - skyfonts
+    state: latest
+    update_homebrew: true
