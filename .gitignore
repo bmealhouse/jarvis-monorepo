@@ -3,4 +3,5 @@
 .pnpm-debug.log
 .turbo
 cdk.out
+coverage
 node_modules
