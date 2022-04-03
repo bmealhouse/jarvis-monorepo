@@ -18,3 +18,22 @@ These playbooks install and configure most of the Mac software I use for softwar
 5. Run `ansible-playbook dev/main.yml --ask-vault-pass --ask-become-pass` inside this directory.
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
+
+## System settings
+
+### How to find the domain & key responsible for a setting
+
+```sh
+mkdir -p .diff
+defaults read > .diff/before
+defaults read > .diff/after
+code --diff .diff/before .diff/after
+```
+
+[See pawelgrzybek blog post](https://pawelgrzybek.com/change-macos-user-preferences-via-command-line/)
+
+## Inspiration
+
+- [geerlingguy/mac-dev-playbook](https://github.com/geerlingguy/mac-dev-playbook)
+- [mathiasbynens/dotfiles](https://mths.be/macos)
+- [pawelgrzybek/dotfiles](https://github.com/pawelgrzybek/dotfiles/blob/master/setup-macos.sh)
