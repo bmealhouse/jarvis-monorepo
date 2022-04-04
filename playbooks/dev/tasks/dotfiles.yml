@@ -20,7 +20,6 @@
     dest: ~/.zsh/_git
 
 - name: copy .zshrc
-  register: copy_zshrc
   copy:
     src: files/.zshrc
     dest: ~/.zshrc

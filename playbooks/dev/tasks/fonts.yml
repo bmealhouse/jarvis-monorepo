@@ -1,0 +1,31 @@
+---
+- name: install codeface fonts
+  unarchive:
+    remote_src: yes
+    src: https://github.com/chrissimpkins/codeface/releases/download/font-collection/codeface-fonts.zip
+    dest: ~/Library/Fonts
+    exclude:
+      - "*.md"
+      - "*.txt"
+    extra_opts:
+      - -j # junk paths (do not make directories)
+
+- name: clone purchased fonts repo and create archive
+  git:
+    repo: git@github.com:bmealhouse/fonts.git
+    dest: ~/dev/fonts
+    archive: /tmp/fonts.zip
+
+- name: install purchased fonts from archive
+  unarchive:
+    src: /tmp/fonts.zip
+    dest: ~/Library/Fonts
+    exclude:
+      - "*.css"
+      - "*.dmg"
+      - "*.md"
+      - "*.rtf"
+      - "*.txt"
+      - "*.url"
+    extra_opts:
+      - -j # junk paths (do not make directories)

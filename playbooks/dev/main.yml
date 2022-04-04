@@ -12,3 +12,4 @@
     - import_tasks: tasks/homebrew.yml
     - import_tasks: tasks/node.yml
     - import_tasks: tasks/dotfiles.yml
+    - import_tasks: tasks/fonts.yml
