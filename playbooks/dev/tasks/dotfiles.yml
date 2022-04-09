@@ -1,4 +1,6 @@
 ---
+- include_vars: vars/dotfiles.yml
+
 - name: create ~/dev
   file:
     path: ~/dev
@@ -23,6 +25,8 @@
   copy:
     src: files/.zshrc
     dest: ~/.zshrc
+  tags:
+    - up
 
 - name: add font awesome npm auth token
   lineinfile:

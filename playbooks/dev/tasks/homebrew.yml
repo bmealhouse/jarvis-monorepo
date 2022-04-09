@@ -21,6 +21,8 @@
       - homebrew/cask
       - homebrew/cask-versions
     state: present
+  tags:
+    - up
 
 - name: install homebrew formulae
   community.general.homebrew:
@@ -37,6 +39,8 @@
       - zsh-syntax-highlighting
     state: latest
     update_homebrew: true
+  tags:
+    - up
 
 - name: install homebrew casks
   community.general.homebrew_cask:
@@ -58,3 +62,5 @@
       - visual-studio-code
     state: latest
     update_homebrew: true
+  tags:
+    - up

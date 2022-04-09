@@ -227,86 +227,113 @@
     value: icnv
     state: present
 
-- name: print arrange by for desktop icon view setting
+- name: print showItemInfo for Desktop:IconViewSettings
+  command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :DesktopViewSettings:IconViewSettings:showItemInfo"
+  register: showItemInfo_Desktop_IconView
+  changed_when: false
+
+- name: set showItemInfo for Desktop:IconViewSettings
+  command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :DesktopViewSettings:IconViewSettings:showItemInfo true"
+  when: showItemInfo_Desktop_IconView.stdout != "true"
+
+- name: print showItemInfo for FK_Standard:IconViewSettings
+  command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :FK_StandardViewSettings:IconViewSettings:showItemInfo"
+  register: showItemInfo_FK_Standard_IconView
+  changed_when: false
+
+- name: set showItemInfo for FK_Standard:IconViewSettings
+  command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :FK_StandardViewSettings:IconViewSettings:showItemInfo true"
+  when: showItemInfo_FK_Standard_IconView.stdout != "true"
+
+- name: print showItemInfo for Standard:IconViewSettings
+  command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :StandardViewSettings:IconViewSettings:showItemInfo"
+  register: showItemInfo_Standard_IconView
+  changed_when: false
+
+- name: set showItemInfo for Standard:IconViewSettings
+  command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :StandardViewSettings:IconViewSettings:showItemInfo true"
+  when: showItemInfo_Standard_IconView.stdout != "true"
+
+- name: print arrangeBy for Desktop:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :DesktopViewSettings:IconViewSettings:arrangeBy"
-  register: arrange_by_desktop_icon_view
+  register: arrangeBy_Desktop_IconView
   changed_when: false
 
-- name: set arrange by for desktop icon view setting
+- name: set arrangeBy for Desktop:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid"
-  when: arrange_by_desktop_icon_view.stdout != "grid"
+  when: arrangeBy_Desktop_IconView.stdout != "grid"
 
-- name: print arrange by for FK standard icon view setting
+- name: print arrangeBy for FK_Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :FK_StandardViewSettings:IconViewSettings:arrangeBy"
-  register: arrange_by_fk_standard_icon_view
+  register: arrangeBy_FK_Standard_IconView
   changed_when: false
 
-- name: set arrange by for FK standard icon view setting
+- name: set arrangeBy for FK_Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :FK_StandardViewSettings:IconViewSettings:arrangeBy grid"
-  when: arrange_by_fk_standard_icon_view.stdout != "grid"
+  when: arrangeBy_FK_Standard_IconView.stdout != "grid"
 
-- name: print arrange by for standard icon view setting
+- name: print arrangeBy for Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :StandardViewSettings:IconViewSettings:arrangeBy"
-  register: arrange_by_standard_icon_view
+  register: arrangeBy_Standard_IconView
   changed_when: false
 
-- name: set arrange by for standard icon view setting
+- name: set arrangeBy for Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :StandardViewSettings:IconViewSettings:arrangeBy grid"
-  when: arrange_by_standard_icon_view.stdout != "grid"
+  when: arrangeBy_Standard_IconView.stdout != "grid"
 
-- name: print grid spacing for desktop icon view setting
+- name: print gridSpacing for Desktop:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :DesktopViewSettings:IconViewSettings:gridSpacing"
-  register: grid_spacing_desktop_icon_view
+  register: gridSpacing_Desktop_IconView
   changed_when: false
 
-- name: set grid spacing for desktop icon view setting
+- name: set gridSpacing for Desktop:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :DesktopViewSettings:IconViewSettings:gridSpacing 100"
-  when: grid_spacing_desktop_icon_view.stdout != "100.000000"
+  when: gridSpacing_Desktop_IconView.stdout != "100.000000"
 
-- name: print grid spacing for FK standard icon view setting
+- name: print gridSpacing for FK_Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :FK_StandardViewSettings:IconViewSettings:gridSpacing"
-  register: grid_spacing_fk_standard_icon_view
+  register: gridSpacing_FK_Standard_IconView
   changed_when: false
 
-- name: set grid spacing for FK standard icon view setting
+- name: set gridSpacing for FK_Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :FK_StandardViewSettings:IconViewSettings:gridSpacing 100"
-  when: grid_spacing_fk_standard_icon_view.stdout != "100.000000"
+  when: gridSpacing_FK_Standard_IconView.stdout != "100.000000"
 
-- name: print grid spacing for standard icon view setting
+- name: print gridSpacing for Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :StandardViewSettings:IconViewSettings:gridSpacing"
-  register: grid_spacing_standard_icon_view
+  register: gridSpacing_Standard_IconView
   changed_when: false
 
-- name: set grid spacing for standard icon view setting
+- name: set gridSpacing for Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :StandardViewSettings:IconViewSettings:gridSpacing 100"
-  when: grid_spacing_standard_icon_view.stdout != "100.000000"
+  when: gridSpacing_Standard_IconView.stdout != "100.000000"
 
-- name: print icon size for desktop icon view setting
+- name: print iconSize for Desktop:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :DesktopViewSettings:IconViewSettings:iconSize"
-  register: icon_size_desktop_icon_view
+  register: iconSize_Desktop_IconView
   changed_when: false
 
-- name: set icon size for desktop icon view setting
+- name: set iconSize for Desktop:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :DesktopViewSettings:IconViewSettings:iconSize 80"
-  when: icon_size_desktop_icon_view.stdout != "80.000000"
+  when: iconSize_Desktop_IconView.stdout != "80.000000"
 
-- name: print icon size for FK standard icon view setting
+- name: print iconSize for FK_Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :FK_StandardViewSettings:IconViewSettings:iconSize"
-  register: icon_size_fk_standard_icon_view
+  register: iconSize_FK_Standard_IconView
   changed_when: false
 
-- name: set icon size for FK standard icon view setting
+- name: set iconSize for FK_Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :FK_StandardViewSettings:IconViewSettings:iconSize 80"
-  when: icon_size_fk_standard_icon_view.stdout != "80.000000"
+  when: iconSize_FK_Standard_IconView.stdout != "80.000000"
 
-- name: print icon size for standard icon view setting
+- name: print iconSize for Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Print :StandardViewSettings:IconViewSettings:iconSize"
-  register: icon_size_standard_icon_view
+  register: iconSize_Standard_IconView
   changed_when: false
 
-- name: set icon size for standard icon view setting
+- name: set iconSize for Standard:IconViewSettings
   command: /usr/libexec/PlistBuddy ~/Library/Preferences/com.apple.finder.plist -c "Set :StandardViewSettings:IconViewSettings:iconSize 80"
-  when: icon_size_standard_icon_view.stdout != "80.000000"
+  when: iconSize_Standard_IconView.stdout != "80.000000"
 
 ###############################################################################
 # Dock & Menu Bar

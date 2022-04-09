@@ -1,15 +1,15 @@
 ---
 - hosts: all
 
-  vars_files:
-    - vars/ssh.yml
-    - vars/dotfiles.yml
-
   tasks:
     - import_tasks: tasks/ssh.yml
     - import_tasks: tasks/git.yml
     - import_tasks: tasks/system.yml
+      tags:
+        - up
     - import_tasks: tasks/homebrew.yml
     - import_tasks: tasks/node.yml
     - import_tasks: tasks/dotfiles.yml
     - import_tasks: tasks/fonts.yml
+      tags:
+        - up

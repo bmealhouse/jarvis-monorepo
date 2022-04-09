@@ -19,6 +19,20 @@ These playbooks install and configure most of the Mac software I use for softwar
 
 > Note: If some Homebrew commands fail, you might need to agree to Xcode's license or fix some other Brew issue. Run `brew doctor` to see if this is the case.
 
+## Usage
+
+### Execute full playbook
+
+```sh
+ansible-playbook dev/main.yml --ask-vault-pass --ask-become-pass
+```
+
+### Update machine using playbook tags
+
+```sh
+ansible-playbook dev/main.yml -t up
+```
+
 ## System settings
 
 ### How to find the domain & key responsible for a setting

@@ -1,4 +1,6 @@
 ---
+- include_vars: vars/ssh.yml
+
 - name: ensure the ~/.ssh directory exists
   file:
     path: ~/.ssh
