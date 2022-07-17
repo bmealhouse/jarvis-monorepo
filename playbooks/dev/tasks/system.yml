@@ -339,14 +339,6 @@
 # Dock & Menu Bar
 ###############################################################################
 
-- name: minimize windows into their application's icon
-  community.general.osx_defaults:
-    domain: com.apple.dock
-    key: minimize-to-application
-    type: bool
-    value: true
-    state: present
-
 - name: show only open applications in the dock
   community.general.osx_defaults:
     domain: com.apple.dock
