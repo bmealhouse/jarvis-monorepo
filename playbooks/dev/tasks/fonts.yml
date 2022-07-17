@@ -21,9 +21,11 @@
     src: /tmp/fonts.zip
     dest: ~/Library/Fonts
     exclude:
+      - "*.bdf"
       - "*.css"
       - "*.dmg"
       - "*.md"
+      - "*.otb"
       - "*.rtf"
       - "*.txt"
       - "*.url"
