@@ -1,8 +1,9 @@
 .diff
 .DS_Store
 .env
-.pnpm-debug.log
 .turbo
 cdk.out
 coverage
 node_modules
+
+*.log
