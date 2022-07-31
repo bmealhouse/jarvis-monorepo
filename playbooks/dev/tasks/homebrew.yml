@@ -27,6 +27,7 @@
 - name: install homebrew formulae
   community.general.homebrew:
     name:
+      - deno
       - exiftool
       - jq
       - neovim

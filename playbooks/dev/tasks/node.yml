@@ -1,27 +1,26 @@
 ---
-- name: check if node is installed
-  command: volta which node
-  register: which_node
+- name: install or update node
+  command: volta install node
+
+- name: check if yarn is installed
+  command: volta which yarn
+  register: which_yarn
   changed_when: false
   ignore_errors: true
-
-- name: install node
-  command: volta install node
-  when: which_node.rc == 1
 
 - name: install yarn
   command: volta install yarn
-  when: which_node.rc == 1
+  when: which_yarn.rc == 1
 
-- name: check if pnpm is installed
-  command: volta which pnpm
-  register: which_pnpm
+- name: check if ni is installed
+  command: volta which ni
+  register: which_ni
   changed_when: false
   ignore_errors: true
 
-- name: install pnpm
-  command: volta install pnpm
-  when: which_pnpm.rc == 1
+- name: install ni
+  command: volta install @antfu/ni
+  when: which_ni.rc == 1
 
 - name: check if spot is installed
   command: volta which spot

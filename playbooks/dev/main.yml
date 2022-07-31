@@ -8,8 +8,14 @@
       tags:
         - up
     - import_tasks: tasks/homebrew.yml
+      tags:
+        - brew
     - import_tasks: tasks/node.yml
+      tags:
+        - node
+        - up
     - import_tasks: tasks/dotfiles.yml
     - import_tasks: tasks/fonts.yml
       tags:
+        - fonts
         - up
