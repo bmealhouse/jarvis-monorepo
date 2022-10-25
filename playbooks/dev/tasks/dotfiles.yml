@@ -21,6 +21,17 @@
     url: https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.zsh
     dest: ~/.zsh/_git
 
+- name: clone dotfiles repo
+  git:
+    repo: git@github.com:bmealhouse/dotfiles.git
+    dest: ~/dev/dotfiles
+
+- name: create a symbolic link for nvim config
+  file:
+    src: ~/dev/dotfiles/nvim
+    dest: ~/.config/nvim
+    state: link
+
 - name: copy .zshrc
   copy:
     src: files/.zshrc
