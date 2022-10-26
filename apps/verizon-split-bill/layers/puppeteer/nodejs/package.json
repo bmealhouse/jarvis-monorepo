@@ -1,7 +1,0 @@
-{
-  "name": "puppeteer-layer",
-  "dependencies": {
-    "chrome-aws-lambda": "10.1.x",
-    "puppeteer-core": "10.1.x"
-  }
-}
