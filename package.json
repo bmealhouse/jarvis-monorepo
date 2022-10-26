@@ -7,10 +7,5 @@
   "packageManager": "pnpm@6.32.3",
   "volta": {
     "node": "16.14.0"
-  },
-  "pnpm": {
-    "peerDependencyRules": {
-      "ignoreMissing": ["@aws-sdk/signature-v4-crt"]
-    }
   }
 }
