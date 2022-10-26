@@ -119,7 +119,7 @@ try {
       }
     );
 
-    const maxDurationMs = 5000;
+    const maxDurationMs = 10000;
     const waitDurationMs = 100;
 
     let totalDuration = 0;
@@ -229,7 +229,7 @@ try {
           data?.[key] ?? {};
 
         if (!isLineLevel) {
-          planAmount = cents(currentBillCost);
+          planAmount += cents(currentBillCost);
           continue;
         }
 
@@ -250,12 +250,22 @@ try {
       }
     }
 
-    const totalLines = Object.keys(chargesByLine).length;
+    const planExcludedLines: string[] = JSON.parse(
+      Deno.env.get("VERIZON_PLAN_EXCLUDED_LINES") ?? "[]"
+    );
+
+    const totalLines = Object.keys(chargesByLine).filter(
+      (line) => !planExcludedLines.includes(line)
+    ).length;
+
     const planAmountPerLine = Math.ceil(planAmount / totalLines);
 
     let total = 0;
     for (const line of Object.values(chargesByLine)) {
-      line.amount += planAmountPerLine;
+      if (!planExcludedLines.includes(line.phoneNumber)) {
+        line.amount += planAmountPerLine;
+      }
+
       total += line.amount;
     }
 
@@ -453,6 +463,8 @@ try {
       `${new Date().toISOString()} :: ERROR :: ${error}`,
     ].join(EOL.LF)
   );
+
+  Deno.exit();
 }
 
 await Deno.writeTextFile(
