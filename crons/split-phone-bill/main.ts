@@ -437,6 +437,9 @@ try {
       from: {
         email: Deno.env.get("SENDGRID_FROM") ?? "",
       },
+      reply_to: {
+        email: Deno.env.get("SENDGRID_REPLY_TO") ?? "",
+      },
       subject: "Verizon Bill",
       content: [
         {
@@ -581,6 +584,7 @@ type SendGridEmailRequest = {
     to: SendGridContact[];
   }>;
   from: SendGridContact;
+  reply_to: SendGridContact;
   subject: string;
   content: SendGridContent[];
 };
